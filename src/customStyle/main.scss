@@ -1,0 +1,847 @@
+@use "sass:math";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+/*
+ * CUSTOM STYLE SHEET
+ */
+
+/*** Variables ***/
+
+/* Colors: */
+$primary-d1: #ff8243;
+$primary-m1: #fda65d;
+$primary-brand: #e26a2c;
+$primary-l1: #ffd07f;
+$gray-d2: #181c24;
+$gray-d1: #535965;
+$gray-m1: #91959c;
+$gray-l1: #e5e5e7;
+$gray-l2: #b5b7bc;
+$white: #ffffff;
+$positive-2: #12805c;
+$positive-1: #268e6c;
+$negative-2: #c9252d;
+$negative-1: #d7373f;
+
+/* Viewport: Breakpoints */
+$screen-xs: 480px !default;
+
+$screen-xs-min: $screen-xs !default;
+
+$screen-phone: $screen-xs-min !default;
+
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
+$screen-tablet: $screen-sm-min !default;
+
+// Medium screen / desktop
+$screen-md: 992px !default;
+$screen-md-min: $screen-md !default;
+$screen-desktop: $screen-md-min !default;
+
+// Large screen / wide desktop
+$screen-lg: 1200px !default;
+$screen-lg-min: $screen-lg !default;
+$screen-lg-desktop: $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+
+/* Container */
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+$grid-float-breakpoint: $screen-sm-min !default;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+// Small screen / tablet
+$container-tablet: (720px + $grid-gutter-width) !default;
+//** For `$screen-sm-min` and up.
+$container-sm: $container-tablet !default;
+
+// Medium screen / desktop
+$container-desktop: (940px + $grid-gutter-width) !default;
+//** For `$screen-md-min` and up.
+$container-md: $container-desktop !default;
+
+// Large screen / wide desktop
+$container-large-desktop: (1140px + $grid-gutter-width) !default;
+
+$container-lg: $container-large-desktop !default;
+
+// Clearfix
+@mixin clearfix() {
+  &:before,
+  &:after {
+    display: table; // 2
+    content: " "; // 1
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* Centered Container Elements */
+@mixin container-fixed($gutter: $grid-gutter-width) {
+  padding-right: ceil(math.div($gutter, 2));
+  padding-left: floor(math.div($gutter, 2));
+  margin-right: auto;
+  margin-left: auto;
+  @include clearfix;
+}
+
+.container {
+  @include container-fixed;
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+
+/* Logo letter Spacing */
+.logo {
+  letter-spacing: 0.3rem;
+}
+
+/* Navbar */
+.navbar_custom {
+  background-color: $primary-brand !important;
+  color: $white;
+}
+
+.NavLink {
+  background-color: transparent;
+
+  &:hover {
+    color: $gray-d2;
+  }
+}
+
+.activeLinkTabKeeper {
+  width: auto;
+  height: 2px;
+  border: 1px solid $gray-d1;
+}
+
+.active {
+  background-color: transparent;
+  padding-top: 1em;
+  border-radius: 0% !important;
+  border-bottom: 0.43rem solid $primary-l1;
+  border-bottom-style: ridge;
+}
+/*
+  * Home Styling
+  */
+
+// Hero Component
+.leftCaption {
+  background: transparent linear-gradient(181deg, #f1f1f100 0%, #f0f0f0 100%) 0%
+    0% no-repeat padding-box;
+  mix-blend-mode: multiply;
+}
+
+/* Slider */
+.swiper-container {
+  height: 570px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+}
+
+.swiperSlideDiv {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiperSlideImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+.swiperSlideText {
+  color: #ffffff;
+  position: absolute;
+  top: 161px;
+  left: 151px;
+  font-weight: 600;
+  width: 442px;
+  height: 126px;
+  color: $gray-d2;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #172026;
+  opacity: 1;
+  font: normal normal 600 48px/60px Source Serif Pro;
+  z-index: 99;
+  span {
+    font-size: 48px;
+  }
+  @media only screen and (max-width: $screen-phone) {
+    span {
+      font-size: 36px;
+    }
+    top: 270px;
+    left: 16px;
+    width: 341px;
+    font-weight: 600;
+    height: 98px;
+    text-align: center;
+    font: normal normal 600 36px/45px Source Serif Pro;
+    letter-spacing: 0px;
+    color: #1b252c;
+    opacity: 1;
+  }
+}
+
+.swiperSlideSubText {
+  position: relative;
+  font-size: 16px;
+  top: 305px;
+  left: 151px;
+  width: 442px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  z-index: 99;
+  @media only screen and (max-width: $screen-phone) {
+    top: 368px;
+    left: 16px;
+    width: 341px;
+    height: 44px;
+    text-align: center;
+    font: normal normal normal 16px/24px Muli;
+    letter-spacing: 0.32px;
+    color: #1b252c;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    opacity: 1;
+  }
+}
+
+.swiperSlideButton {
+  position: absolute;
+  top: 394px;
+  left: 151px;
+  width: 220px;
+  height: 40px;
+  background-color: $primary-brand;
+  color: white;
+  z-index: 99;
+  @media only screen and (max-width: $screen-phone) {
+    top: 444px;
+    left: 78px;
+  }
+  &:hover {
+    background-color: $primary-l1;
+    color: black;
+    border: 1px solid $primary-brand;
+  }
+}
+
+.hideInSmallScreen {
+  @media screen and (max-width: $screen-sm) {
+    height: 0;
+  }
+  @media screen and (max-width: $screen-sm) {
+    height: 0;
+  }
+}
+.phone_flex_col {
+  @media screen and (max-width: $screen-tablet) {
+    display: flex !important;
+    flex-direction: column;
+    justify-items: center;
+    overflow-x: hidden;
+  }
+}
+
+.hoverImageScaleZoomOut {
+  transition: transform 0.9s;
+  &:hover {
+    transform: scale(0.95);
+    overflow: hidden;
+  }
+}
+
+.homeCategoriesComponent {
+  position: absolute;
+  top: 610px;
+  z-index: 101;
+  height: 33vh;
+  @media screen and (max-width: $screen-sm) {
+    top: 570px;
+  }
+  .homeCategoriesImage {
+    height: 341px !important;
+    @media screen and (max-width: $screen-sm) {
+      height: 267px;
+    }
+  }
+  .homeCategoriesImageCaptions {
+    position: relative;
+    top: -90px;
+    margin-bottom: -90px;
+    background: #1b252cd9 0% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 90px;
+    width: auto;
+    border-bottom: 8px solid $primary-brand;
+    overflow: hidden;
+    @media screen and (max-width: $screen-sm) {
+      width: 342px;
+    }
+    h3 {
+      color: white;
+      padding: 17px 17px 0 38px;
+      text-align: left;
+      font: normal normal 600 24px/30px Source Serif Pro;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+      overflow: hidden;
+    }
+    .category-caption-2 {
+      color: white;
+      padding-left: 38px;
+      padding-bottom: 21px;
+    }
+  }
+}
+
+// Home Screen 3rd Section
+
+.home-section-three {
+  .container {
+    @media screen and (max-width: $screen-sm) {
+      padding: 0 !important;
+    }
+  }
+  position: relative;
+  top: 339px;
+  height: 450px;
+  @media screen and (max-width: $screen-sm) {
+    top: 1350px;
+    width: 342px;
+  }
+  @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+    top: 725px;
+  }
+  .section-three-image {
+    height: 450px;
+    width: 100%;
+    @media screen and (max-width: $screen-sm) {
+      height: 312px;
+      width: 100%;
+    }
+  }
+}
+
+.section-three-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  h1 {
+    color: $gray-d2;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #172026;
+    opacity: 1;
+    font: normal normal 600 48px/60px Source Serif Pro;
+    z-index: 99;
+    font-size: 48px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: $screen-phone) {
+    width: 344px !important;
+    h1 {
+      margin-top: 16px;
+      font-size: 36px;
+      text-align: center;
+      font: normal normal 600 36px/45px Source Serif Pro;
+      letter-spacing: 0px;
+      color: #1b252c;
+      opacity: 1;
+    }
+    h2 {
+      text-align: center;
+    }
+    p {
+      display: -webkit-box;
+      text-align: center;
+      overflow: hidden;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
+.organgeButtonFilled {
+  background-color: $primary-brand;
+  color: white;
+  width: 220px;
+  height: 40px;
+  &:hover {
+    color: $gray-d2;
+    background-color: $primary-l1;
+    border: 1px solid $primary-brand;
+  }
+}
+.organgeButtonOutline {
+  border: 2px solid $primary-brand;
+  color: $primary-brand;
+  width: 220px;
+  height: 40px;
+  &:hover {
+    color: $gray-d2;
+    background-color: $primary-m1;
+    border: 1px solid $primary-brand;
+  }
+}
+
+.breaker-hr-orangeBar {
+  height: 8px;
+  background-color: $primary-brand;
+  width: 102px;
+  @media only screen and (max-width: $screen-phone) {
+    width: 78px;
+  }
+}
+
+// Home Section 4th
+.home-section-four {
+  .container {
+    @media screen and (max-width: $screen-sm) {
+      padding: 0 !important;
+    }
+  }
+  position: relative;
+  top: 339px;
+  height: 450px;
+  @media screen and (max-width: $screen-sm) {
+    top: 1675px;
+    width: 342px;
+  }
+  @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+    top: 725px;
+  }
+  .section-four-image {
+    height: 450px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    @media screen and (max-width: $screen-sm) {
+      height: 312px;
+      width: 100%;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+
+  .section-four-textBox {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      color: white;
+      text-align: left;
+      letter-spacing: 0px;
+      opacity: 1;
+      font: normal normal 600 48px/60px Source Serif Pro;
+      z-index: 99;
+      font-size: 36px;
+    }
+
+    h2 {
+      color: white;
+      padding: 1.75em;
+    }
+  }
+}
+
+.shopDeviceBTN {
+  color: white;
+  border: 2px solid white;
+  &:hover {
+    color: $primary-brand;
+    background-color: $white;
+    border: 2px solid $primary-brand;
+  }
+}
+
+// Categories Section
+
+// Header Stylings---->
+.categoryTitle {
+  height: 352px;
+  background-color: #1b252c;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .categoryTitleBorderBottom {
+    padding-bottom: 1rem;
+    border-bottom: 8px solid $primary-brand;
+    @media screen and (max-width: $screen-sm) {
+      padding-bottom: 0.25rem;
+    }
+  }
+  .categoryTitleText {
+    font-size: 48px !important;
+    color: white;
+    text-align: center;
+    font: normal normal 600 48px/60px Source Serif Pro;
+    letter-spacing: 0px;
+    @media screen and (max-width: $screen-sm) {
+      font-size: 36px !important;
+    }
+  }
+  @media screen and (max-width: $screen-sm) {
+    height: 159px;
+    position: relative;
+    top: 80px;
+    margin: 0px 16px 0px 16px;
+  }
+}
+.categoryBannerImager {
+  img {
+    width: 100%;
+    height: 352px !important;
+    object-fit: cover;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  @media screen and (max-width: $screen-sm) {
+    height: 193px !important;
+  }
+}
+.categoryBanner {
+}
+
+.categoryTopHeaderRow {
+  @media screen and (max-width: $screen-sm) {
+    .aem-Grid {
+      display: flex;
+      width: 100%;
+      flex-direction: column-reverse;
+    }
+  }
+  @media screen and (max-width: $screen-sm) {
+    height: 272px !important;
+  }
+}
+
+.mainCategory {
+  @media screen and (max-width: $screen-sm) {
+    margin-top: 150px !important;
+  }
+}
+
+// Category - Products Card
+.productCard {
+  margin: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  .productImage {
+    display: flex;
+    flex-direction: column;
+    background-color: $gray-l1;
+    img {
+      height: 382px !important;
+      object-fit: cover;
+      @media screen and (max-width: $screen-sm) {
+        height: 196px !important;
+      }
+    }
+  }
+  .productName {
+    padding-left: 8px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .productPrice {
+    padding-left: 8px;
+  }
+  .addToCartWithHeart {
+    padding-left: 8px;
+  }
+}
+
+// Product details--- Thumnail
+.productContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  @media screen and (max-width: $screen-phone) {
+    flex-direction: column-reverse;
+  }
+}
+
+.productThumbnails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  line-height: 0;
+  @media screen and (max-width: $screen-phone) {
+    flex-direction: row;
+    padding-top: 8px;
+  }
+}
+
+.productThumbnails li {
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+  z-index: 5;
+}
+
+.productThumbnails a {
+  display: block;
+}
+
+.productThumbnails img {
+  width: 120px;
+  height: 100px;
+  -o-object-fit: conatin;
+  object-fit: conatin;
+  @media screen and (max-width: $screen-phone) {
+    width: 100%;
+  }
+}
+
+.productproductSlides {
+  overflow: hidden;
+}
+
+.productproductSlides,
+.productproductSlides li {
+  height: 70vmin;
+}
+
+.productproductSlides img {
+  height: 70vmin;
+  -o-object-fit: conatin;
+  object-fit: conatin;
+  align-items: center;
+  @media screen and (max-width: $screen-phone) {
+  }
+}
+
+.productproductSlides li {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.productproductSlides li:target {
+  z-index: 3;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+@-webkit-keyframes hidden {
+  0% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 2;
+  }
+}
+@keyframes hidden {
+  0% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 2;
+  }
+}
+
+.productproductSlides li:not(:target) {
+  -webkit-animation: hidden 1s 1;
+}
+
+.productPaginationImage {
+  width: 343px;
+  height: 410px;
+}
+
+.quantity-counter {
+  width: 114px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  border-radius: 0.25em;
+  border: 1px solid $gray-m1;
+  @media screen and (max-width: $screen-phone) {
+    width: 169px;
+  }
+}
+
+.orange_border_product {
+  width: 102px;
+  height: 8px;
+  /* UI Properties */
+  background: #e26a2c 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+/* Common Components */
+
+.menu-compact {
+  li {
+    z-index: 999 !important;
+  }
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: $primary-brand transparent $primary-d1 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.footerStyle {
+  height: 183px;
+  position: relative;
+  top: 450px;
+  bottom: 0;
+  @media screen and (max-width: $screen-sm) {
+    top: 2010px;
+  }
+  @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+    top: 825px;
+  }
+}
+
+.reverseFlexRow {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.filterBox {
+  .justify-start-box {
+    justify-content: flex-start !important;
+    padding-left: 8px;
+  }
+}
+
+// Slider
+.swiper-button-prev,
+.swiper-button-next {
+  color: $gray-m1 !important;
+}
+
+// Read more
+.read-or-hide {
+  cursor: pointer;
+}
