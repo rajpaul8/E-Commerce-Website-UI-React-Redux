@@ -221,6 +221,11 @@ $container-lg: $container-large-desktop !default;
     color: #1b252c;
     opacity: 1;
   }
+  @media only screen and (min-width: $screen-phone) and (max-width: $screen-tablet) {
+    top: 120px;
+    left: 76px;
+    width: 451px;
+  }
 }
 
 .swiperSlideSubText {
@@ -249,6 +254,12 @@ $container-lg: $container-large-desktop !default;
     -webkit-box-orient: vertical;
     opacity: 1;
   }
+  @media only screen and (min-width: $screen-phone) and (max-width: $screen-tablet) {
+    top: 298px;
+    left: 78px;
+    text-align: center;
+    width: 400px;
+  }
 }
 
 .swiperSlideButton {
@@ -272,10 +283,7 @@ $container-lg: $container-large-desktop !default;
 }
 
 .hideInSmallScreen {
-  @media screen and (max-width: $screen-sm) {
-    height: 0;
-  }
-  @media screen and (max-width: $screen-sm) {
+  @media screen and (max-width: $screen-tablet) {
     height: 0;
   }
 }
@@ -350,14 +358,14 @@ $container-lg: $container-large-desktop !default;
     }
   }
   position: relative;
-  top: 339px;
+  top: 209px;
   height: 450px;
-  @media screen and (max-width: $screen-sm) {
-    top: 1350px;
+  @media screen and (max-width: $screen-phone) {
+    top: 1080px;
     width: 342px;
   }
-  @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-    top: 725px;
+  @media screen and (min-width: $screen-phone) and (max-width: $screen-tablet) {
+    top: 1225px;
   }
   .section-three-image {
     height: 450px;
@@ -387,7 +395,7 @@ $container-lg: $container-large-desktop !default;
   h2 {
     font-size: 20px;
   }
-  @media only screen and (max-width: $screen-phone) {
+  @media only screen and (max-width: $screen-tablet) {
     width: 344px !important;
     h1 {
       margin-top: 16px;
@@ -451,11 +459,11 @@ $container-lg: $container-large-desktop !default;
     }
   }
   position: relative;
-  top: 339px;
+  top: 239px;
   height: 450px;
   @media screen and (max-width: $screen-sm) {
-    top: 1675px;
-    width: 342px;
+    top: 1450px;
+    max-width: 100%;
   }
   @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
     top: 725px;
@@ -802,6 +810,26 @@ $container-lg: $container-large-desktop !default;
   border-bottom-width: 0px !important;
 }
 
+.setCartItemsHeight {
+  min-height: 400px;
+
+  @media screen and (max-width: $screen-tablet) {
+    margin-top: 30px;
+    min-height: auto;
+  }
+}
+
+.continueShoppingButton {
+  border: 1px solid $primary-brand;
+  color: $primary-brand;
+  padding: 0.25em;
+  &:hover {
+    background-color: $primary-brand;
+    border: 1px solid black;
+    color: white;
+  }
+}
+
 /* Common Components */
 
 .menu-compact {
@@ -835,14 +863,7 @@ $container-lg: $container-large-desktop !default;
 .footerStyle {
   height: 183px;
   position: relative;
-  top: 450px;
   bottom: 0;
-  @media screen and (max-width: $screen-sm) {
-    top: 2010px;
-  }
-  @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
-    top: 825px;
-  }
 }
 
 .reverseFlexRow {
@@ -867,7 +888,6 @@ $container-lg: $container-large-desktop !default;
 .read-or-hide {
   cursor: pointer;
 }
-
 
 .paypalButtonFilled {
   background-color: #ffc43a;

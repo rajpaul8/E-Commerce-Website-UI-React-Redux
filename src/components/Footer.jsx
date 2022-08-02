@@ -4,7 +4,7 @@ import { SiInstagram } from 'react-icons/si'
 function Footer() {
     return (
         <>
-            <div className="footerStyle">
+            <div className="footerStyle mt-10">
                 <div className="">
                     <div className="container">
                         <footer className="footer p-10 bg-base-200 text-base-content space-x-7">

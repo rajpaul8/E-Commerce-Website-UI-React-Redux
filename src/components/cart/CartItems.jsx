@@ -32,7 +32,7 @@ function CartItems({ cartItems }) {
         <>
             {/* <!-- Cart --> */}
             <div className="overflow-x-auto w-full">
-                <table className="table table-compact w-full">
+                <table className="table table-compact">
                     {/* <!-- head --> */}
 
                     <tbody>
@@ -43,7 +43,7 @@ function CartItems({ cartItems }) {
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
-                                                <div className=" w-44 h-52">
+                                                <div className=" lg:w-44 lg:h-52 w-">
                                                     <img src={item.image} alt="" className='!object-contain' />
                                                 </div>
                                             </div>

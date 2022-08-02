@@ -31,7 +31,7 @@ function SliderComponent() {
 
     useEffect(() => {
         setLoading(true)
-        setTimeout(() =>  setLoading(false) , 200)
+        setTimeout(() => setLoading(false), 200)
     }, [setLoading])
 
     if (loading) {
@@ -47,44 +47,45 @@ function SliderComponent() {
             <>
                 {listings.length > 0 && (
                     <>
-                        <Swiper slidesPerView={1} pagination={{ clickable: true }} navigation={true} modules={[Navigation]}>
-                            {listings.map((item, id) => (
-                                <SwiperSlide key={id}>
-                                    <div className="aem-Grid aem-Grid--default--12 aem-Grid--tablet--1 aem-Grid--phone--1 leftCaption">
-                                        <div className="aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--1 aem-GridColumn--phone--1  hideInSmallScreen">
-                                            <div className="bannerTitle">
-                                                <p className="swiperSlideText"><span>{item.textHeadings}</span></p>
-                                                <p className="swiperSlideSubText">
-                                                    {item.textSubHeadings}
-                                                </p>
-                                                <Link to='/products'>
-                                                    <button className="swiperSlideButton">Shop Now</button>
+                        <div className="min-h-screen">
+                            <Swiper slidesPerView={1} pagination={{ clickable: true }} navigation={true} modules={[Navigation]}>
+                                {listings.map((item, id) => (
+                                    <SwiperSlide key={id}>
+                                        <div className="aem-Grid aem-Grid--default--12 aem-Grid--tablet--1 aem-Grid--phone--1 leftCaption">
+                                            <div className="aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--1 aem-GridColumn--phone--1  hideInSmallScreen">
+                                                <div className="bannerTitle">
+                                                    <p className="swiperSlideText"><span>{item.textHeadings}</span></p>
+                                                    <p className="swiperSlideSubText">
+                                                        {item.textSubHeadings}
+                                                    </p>
+                                                    <Link to='/products'>
+                                                        <button className="swiperSlideButton">Shop Now</button>
 
-                                                </Link>
+                                                    </Link>
+                                                </div>
+                                            </div>
+
+                                            <div className="aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--1 aem-GridColumn--phone--1 GridColumn--image">
+                                                <div style={width > 600 ? {
+                                                    backgroundImage: `url(${item.imageUrl})`,
+                                                    backgroundSize: "cover",
+                                                    backgroundRepeat: "no-repeat",
+                                                    height: "100vh",
+                                                } : {
+                                                    backgroundImage: `linear-gradient(181deg, #F1F1F100 0%, #F0F0F0 100%), url(${item.imageUrl})`,
+                                                    backgroundSize: "cover",
+                                                    backgroundRepeat: "no-repeat",
+                                                    height: "100vh",
+                                                }}
+                                                    className="swiperSlideDiv">
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div className="aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--1 aem-GridColumn--phone--1 GridColumn--image">
-                                            <div style={width > 600 ? {
-                                                backgroundImage: `url(${item.imageUrl})`,
-                                                backgroundSize: "cover",
-                                                backgroundRepeat: "no-repeat",
-                                                height: "100vh",
-                                            } : {
-                                                backgroundImage: `linear-gradient(181deg, #F1F1F100 0%, #F0F0F0 100%), url(${item.imageUrl})`,
-                                                backgroundSize: "cover",
-                                                backgroundRepeat: "no-repeat",
-                                                height: "100vh",
-                                            }}
-                                                className="swiperSlideDiv">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </SwiperSlide>)
-                            )}
-                        </Swiper>
-
+                                    </SwiperSlide>)
+                                )}
+                            </Swiper>
+                        </div>
                     </>
                 )}
             </>

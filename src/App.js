@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Category from "./Pages/Category/Category";
 import ProductDetail from "./Pages/ProductDetail";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Pages/Cart";
+import Checkout from './Pages/Checkout/CheckoutContactPage'
 
 function App() {
   return (
@@ -16,13 +17,53 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/products/:id" element={<Category />}></Route>
-            <Route path="/products/:id/:productID" element={<ProductDetail />}></Route>
-            <Route path="/products" element={<Category />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
+            <Route
+              path="/products/:id"
+              element={
+                <>
+                  <Category />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/products/:id/:productID"
+              element={
+                <>
+                  <ProductDetail />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/products"
+              element={
+                <>
+                  <Category />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/cart"
+              element={
+                <>
+                  <Cart />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/checkout"
+              element={
+                <>
+                  <Checkout />
+                  <Footer />
+                </>
+              }
+            ></Route>
           </Routes>
           <ToastContainer />
-          <Footer />
         </div>
       </Router>
     </>

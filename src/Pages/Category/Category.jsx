@@ -195,11 +195,11 @@ function Category() {
                                     }
                                 </div>
                                 {/* Pagination Here */}
-                                <div className="btn-group">
-                                    <button className="btn btn-active">1</button>
-                                    <button className="btn ">2</button>
-                                    <button className="btn">3</button>
-                                    <button className="btn">4</button>
+                                <div className="btn-group flex justify-center space-x-7">
+                                    <button className="">1</button>
+                                    <button className="">2</button>
+                                    <button className="">3</button>
+                                    <button className="">4</button>
                                 </div>
                             </div>
                         </div>

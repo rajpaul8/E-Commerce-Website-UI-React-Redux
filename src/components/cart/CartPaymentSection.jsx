@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { BsHandbag, BsPaypal } from 'react-icons/bs'
-
+import { useNavigate } from 'react-router-dom'
 
 function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftCard }) {
-    
-    const [estimatedTotal, setEstimatedTotal] = useState(cartTotalPriceAmountWithoutDiscount)
-    const [couponDiscount,setCouponDiscount] = useState(0)
+    const [estimatedTotal, setEstimatedTotal] = useState(0)
+    const [couponDiscount, setCouponDiscount] = useState(0)
     const [giftCardDiscount, setGiftCardDiscount] = useState(0)
+    const [estimatedTax, setEstimatedTax] = useState(0)
 
     useEffect(() => {
         // Max Coupon Discount upto $100
-        if (((cartTotalPriceAmountWithoutDiscount * coupon) / 100)>100){
+        if (((cartTotalPriceAmountWithoutDiscount * coupon) / 100) > 100) {
             setCouponDiscount(100);
         }
-        else{
+        else {
             setCouponDiscount((cartTotalPriceAmountWithoutDiscount * coupon) / 100)
         }
         // Max Gift Card Discount 
@@ -25,10 +24,16 @@ function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftC
             setGiftCardDiscount((cartTotalPriceAmountWithoutDiscount * giftCard) / 100)
         }
 
-        // original cost + (orignalCost- couponDiscounts + tax)
-        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount)*12)/100).toFixed(2))
-    }, [coupon, giftCard, cartTotalPriceAmountWithoutDiscount, ])
+        // Estimated Taxed Amount
+        setEstimatedTax((((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
 
+        // original cost + (orignalCost- couponDiscounts + tax)
+        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
+    }, 
+    [coupon, giftCard, cartTotalPriceAmountWithoutDiscount,])
+    
+    console.log(estimatedTotal)
+    
     return (
         <>
             <div className='shadow p-5'>
@@ -60,17 +65,12 @@ function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftC
                                 <td className='flex justify-end'>FREE</td>
                             </tr>
                             <tr >
-                                <td className='text-base font-bold'>Apply Gift</td>
-                                <td className='flex justify-end font-bold'>$ {estimatedTotal}</td>
+                                <td className='text-base font-bold'>Estimated Total</td>
+                                <td className='flex justify-end font-bold'>$ {(cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2)}</td>
                             </tr>
                         </tbody>
                     </table>
-                        <div className='flex justify-center mt-5'>
-                        <button className='organgeButtonFilled flex justify-center items-center'><BsHandbag className="text-xl mr-2"/> Checkout</button>
-                        </div>
-                        <div className='flex justify-center mt-5'>
-                        <button className='paypalButtonFilled rounded-3xl flex justify-center items-center'><BsPaypal className="text-xl mr-2" /> <span className='text-blue-800 font-bold'>Pay</span><span className='text-blue-500 font-bold'>Pal</span> </button>
-                        </div>
+                    
                 </div>
             </div>
 
