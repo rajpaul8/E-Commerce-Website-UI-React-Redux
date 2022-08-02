@@ -1,8 +1,20 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { BsFillBagCheckFill } from 'react-icons/bs'
+import cartSlice from '../features/cart/cartSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import { getTotals } from '../features/cart/cartSlice';
+import { useEffect } from 'react';
 
 function Navbar() {
     const location = useLocation();
+    const cart = useSelector(state=>state.cart);
+    const dispatch = useDispatch();
+    
+    useEffect(()=>{
+        dispatch(getTotals())
+    },[cart])
+
+
 
     return (
         <>
@@ -34,7 +46,12 @@ function Navbar() {
                         </ul>
                     </div>
                     <div className="navbar-end flex">
-                        <NavLink to='/checkout'><BsFillBagCheckFill /></NavLink>
+                        <NavLink to='/cart'>
+                            <div class="indicator">
+                                <BsFillBagCheckFill className='text-xl' />
+                                <span class="badge badge-sm indicator-item">{cart.cartTotalQuantity}</span>
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>

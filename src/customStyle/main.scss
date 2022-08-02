@@ -780,6 +780,28 @@ $container-lg: $container-large-desktop !default;
   opacity: 1;
 }
 
+// Shopping Cart
+
+.quantity-counter-cart {
+  width: 88px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  border-radius: 0.25em;
+  border: 1px solid $gray-m1;
+  @media screen and (max-width: $screen-phone) {
+    width: 80px;
+  }
+}
+
+.table:where(:not(.table-zebra))
+  :where(thead, tbody, tfoot)
+  :where(tr:not(:last-child) :where(th, td)) {
+  border-bottom-width: 0px !important;
+}
+
 /* Common Components */
 
 .menu-compact {
@@ -844,4 +866,17 @@ $container-lg: $container-large-desktop !default;
 // Read more
 .read-or-hide {
   cursor: pointer;
+}
+
+
+.paypalButtonFilled {
+  background-color: #ffc43a;
+  color: white;
+  width: 220px;
+  height: 40px;
+  &:hover {
+    color: $gray-d2;
+    background-color: $primary-l1;
+    border: 1px solid #ffc43a;
+  }
 }

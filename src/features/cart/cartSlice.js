@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
-    : [],
+    : [ ],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
 };
@@ -21,13 +21,15 @@ const cartSlice = createSlice({
       if (existingIndex >= 0) {
         state.cartItems[existingIndex] = {
           ...state.cartItems[existingIndex],
-          cartQuantity: state.cartItems[existingIndex].cartQuantity + action.payload.cartQuantity,
-        };toast.success("Added to cart", {
+          cartQuantity:
+            state.cartItems[existingIndex].cartQuantity +
+            action.payload.cartQuantity,
+        };
+        toast.success("Added to cart", {
           position: "bottom-left",
         });
-        
       } else {
-        let tempProductItem = { ...action.payload};
+        let tempProductItem = { ...action.payload };
         state.cartItems.push(tempProductItem);
         toast.success("Added to cart", {
           position: "bottom-left",
@@ -43,7 +45,7 @@ const cartSlice = createSlice({
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
 
-        toast.red("Decreased product quantity", {
+        toast.error("Decreased product quantity", {
           position: "bottom-left",
         });
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {

@@ -6,6 +6,7 @@ import Category from "./Pages/Category/Category";
 import ProductDetail from "./Pages/ProductDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cart from "./Pages/Cart";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/products/:id" element={<Category />}></Route>
             <Route path="/products/:id/:productID" element={<ProductDetail />}></Route>
             <Route path="/products" element={<Category />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
           <ToastContainer />
           <Footer />

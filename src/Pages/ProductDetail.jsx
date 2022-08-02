@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getProduct } from '../features/products/productSlice';
 import { addToCart } from '../features/cart/cartSlice';
 import Spinner from '../components/Spinner';
@@ -8,15 +8,16 @@ import { toast } from "react-toastify";
 import Breadcrumbs from '../components/BreadCrumps';
 import { AiFillStar, AiOutlineStar, AiOutlineMinusCircle, AiOutlinePlusCircle, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai'
 
+
 function ProductDetail() {
   const { product, isLoading, isError, message } = useSelector(state => state.products)
-  const { cart } = useSelector(state => state.cart)
   const dispatch = useDispatch();
   const { productID } = useParams();
   const [isReadMore, setIsReadMore] = useState(true);
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState('')
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isError) {
@@ -51,8 +52,8 @@ function ProductDetail() {
   const handleAddToCart = ()=>{
     let addingToCartProduct = { ...product };
     addingToCartProduct.cartQuantity = quantity;
-    console.log(addingToCartProduct)
     dispatch(addToCart(addingToCartProduct))
+    navigate('/cart')
   }
 
 
@@ -84,7 +85,6 @@ function ProductDetail() {
                     <li id="productSlide4"><img src={product.image} alt={product.title} /></li>
                   </ul>
                 </div>
-
 
               </div>
               <div className="aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pl-7">
