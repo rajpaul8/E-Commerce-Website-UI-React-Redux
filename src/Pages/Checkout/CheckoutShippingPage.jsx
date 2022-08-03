@@ -1,14 +1,8 @@
 import CartPaymentSection from "../../components/cart/CartPaymentSection"
-import { useEffect, useState } from "react"
 import CartShippingInformation from "../../components/cart/CartShippingInformation"
 import ContactEditableCard from "../../components/cart/ContactEditableCard"
 
 function CheckoutShippingPage() {
-    const [pricingSummary, setPricingSummary] = useState({})
-
-    useEffect(() => {
-        setPricingSummary(JSON.parse(localStorage.getItem("pricingSummary")))
-    }, [])
 
     return (
         <>
@@ -28,14 +22,14 @@ function CheckoutShippingPage() {
 
                                 {/* Enter Shipping Info Form Here*/}
                                 <CartShippingInformation />
-                                
+
                             </div>
 
                             {/* Right Side Section Comes Here */}
                             <div className="aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2">
                                 
                                 {/* Pricing Summary Table Here */}
-                                <CartPaymentSection cartTotalPriceAmountWithoutDiscount={pricingSummary.cartTotalPriceAmountWithoutDiscount} coupon={pricingSummary.coupon} giftCard={pricingSummary.giftCard} />
+                                <CartPaymentSection />
                            
                            </div>
                         </div>

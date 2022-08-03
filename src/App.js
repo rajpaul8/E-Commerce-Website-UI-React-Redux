@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Pages/Cart";
 import CheckoutContactPage from "./Pages/Checkout/CheckoutContactPage";
 import CheckoutShippingPage from './Pages/Checkout/CheckoutShippingPage';
+import CheckoutPaymentPage from "./Pages/Checkout/CheckoutPaymentPage";
 
 function App() {
   return (
@@ -68,6 +69,15 @@ function App() {
               element={
                 <>
                   <CheckoutShippingPage />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/checkout/shipping-information"
+              element={
+                <>
+                  <CheckoutPaymentPage />
                   <Footer />
                 </>
               }

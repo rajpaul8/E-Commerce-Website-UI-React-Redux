@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import pricingService from './pricingService';
 
+const pricingSummary = JSON.parse(localStorage.getItem("pricingSummary"));
+
 const initialState = {
-    pricingSummary: {},
+    pricingSummary: pricingSummary? pricingSummary : {},
     isLoading: false,
     isSuccess:false,
     isError: false,

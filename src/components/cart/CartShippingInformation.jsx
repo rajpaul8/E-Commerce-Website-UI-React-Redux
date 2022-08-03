@@ -12,6 +12,12 @@ function CartShippingInformation() {
     
     const navigate =useNavigate();
 
+    const handleRadioToggle =(e)=>{
+        let shippingLocal = { ...pricingSummary };
+        shippingLocal.shipping = e.target.value;
+        dispatch(updatePricing(shippingLocal));
+    }
+
     const handleShippingCharges = (e)=>{
         let shippingLocal = {...pricingSummary};
         shippingLocal.shipping = e.target.value;
@@ -27,15 +33,15 @@ function CartShippingInformation() {
             </div>
 
             <div className='pt-3 ml-1 text-sm'>
-                <input type="radio" id='Standard' name="shippingMethod" className="mr-2 h-4" value={0}  />
+                <input type="radio" id='Standard' name="shippingMethod" className="mr-2 h-4" value={0} onClick={handleRadioToggle} />
                 <label htmlFor="shippingMethod" className='text-md'>Standard Shipping (4-8 business days via USPS) FREE</label>
             </div>
             <div className='pt-1 ml-1 text-sm'>
-                <input type="radio" id='Express' name="shippingMethod" className="mr-2 h-4" value={17.95}  />
+                <input type="radio" id='Express' name="shippingMethod" className="mr-2 h-4" value={17.95} onClick={handleRadioToggle} />
                 <label htmlFor="shippingMethod" className='text-md'>Express Delivery (2-5 business days via USPS) $17.95</label>
             </div>
             <div className='pt-1 pb-3 ml-1 text-sm'>
-                <input type="radio" id='Next Day' name="shippingMethod" className="mr-2 h-4" value={53.61}  />
+                <input type="radio" id='Next Day' name="shippingMethod" className="mr-2 h-4" value={53.61} onClick={handleRadioToggle} />
                 <label htmlFor="shippingMethod" className='text-md'>Next Day Delivery (Next business days via FedEx) $53.61</label>
             </div>
             <div className='flex justify-center mt-7'>

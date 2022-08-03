@@ -17,26 +17,16 @@ function Cart() {
     const { cartTotalPriceAmountWithoutDiscount, coupon, giftCard, shipping } = pricingSummary;
 
     // Making Local States to Rapidly Update item from single element and put it in a form to update the entire dict. of price inn one go
-    
     const [couponLocal, setCouponLocal]= useState(0)
     const [giftCardLocal, setGiftCardLocal]= useState(0)
     const [shippingLocal, setShippingLocal]= useState(0)
-
-    const [pricingSummaryLocal, setPricingSummaryLocal] = useState({
-        cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, couponLocal, giftCardLocal, shippingLocal
-    })
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getTotals());
 
         // UseEffect to store this payment Details in Local session Storage as backend DB is not connected
-        setPricingSummaryLocal({
-            cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, coupon:couponLocal, giftCard:giftCardLocal, shipping:shippingLocal
-        });
-
-        dispatch(updatePricing(pricingSummaryLocal))
+        dispatch(updatePricing({ cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, coupon: couponLocal, giftCard: giftCardLocal, shipping: shippingLocal }))
 
     }, [cart, dispatch, couponLocal, giftCardLocal, shippingLocal]);
 
@@ -45,7 +35,7 @@ function Cart() {
 
     const handleCheckout = () => {
         dispatch(updatePricing(pricingSummary))
-        localStorage.setItem("pricingSummary", JSON.stringify(pricingSummary));
+
         navigate('/checkout');
     }
 

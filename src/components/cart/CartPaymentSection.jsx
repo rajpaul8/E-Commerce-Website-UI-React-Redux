@@ -32,9 +32,9 @@ function CartPaymentSection() {
         setEstimatedTax((((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
 
         // original cost + (orignalCost- couponDiscounts + tax)
-        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
+        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2)+shipping)
     }, 
-    [coupon, giftCard, cartTotalPriceAmountWithoutDiscount,])
+        [coupon, giftCard, cartTotalPriceAmountWithoutDiscount, estimatedTotal, shipping])
 
     return (
         <>
@@ -68,7 +68,7 @@ function CartPaymentSection() {
                             </tr>
                             <tr >
                                 <td className='text-base font-bold'>Estimated Total</td>
-                                <td className='flex justify-end font-bold'>$ {(cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2)}</td>
+                                <td className='flex justify-end font-bold'>$ {((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100) + parseInt(shipping)).toFixed(2)}</td>
                             </tr>
                         </tbody>
                     </table>
