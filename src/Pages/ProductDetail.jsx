@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import Breadcrumbs from '../components/BreadCrumps';
 import { AiFillStar, AiOutlineStar, AiOutlineMinusCircle, AiOutlinePlusCircle, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai'
 
-
 function ProductDetail() {
   const { product, isLoading, isError, message } = useSelector(state => state.products)
   const dispatch = useDispatch();
@@ -55,7 +54,6 @@ function ProductDetail() {
     dispatch(addToCart(addingToCartProduct))
     navigate('/cart')
   }
-
 
   if (isLoading) {
     return <Spinner />

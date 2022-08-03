@@ -40,8 +40,8 @@ function CartPaymentSection() {
         <>
             <div className='shadow p-5'>
                 <h1 className='text-md font-bold'> Pricing Summary </h1>
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full ">
+                <div className="overflow-x-auto">
+                    <table className="table table-compact w-full ">
                         {/* <!-- head --> */}
                         <tbody>
                             {/* <!-- row 1 --> */}

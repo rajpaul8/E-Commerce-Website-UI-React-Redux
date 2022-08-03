@@ -66,36 +66,36 @@ function Cart() {
                                 </div>
                                 {/* Estimate your shipping Section Here*/}
                                 <div className='mt-11 border'>
-                                    <div class="collapse border">
+                                    <div className="collapse border">
                                         <input type="checkbox" />
-                                        <div class="collapse-title text-base font-medium flex justify-between">
+                                        <div className="collapse-title text-base font-medium flex justify-between">
                                             <div>Estimate your Shipping </div><div className='text-2xl'><RiArrowDropDownLine /></div>
                                         </div>
-                                        <div class="collapse-content flex justify-between">
+                                        <div className="collapse-content flex justify-between">
                                             {/* Need to handle the shipping address logic here... and then remove readonly */}
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Complete Address' />
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Pincode' />
                                         </div>
                                     </div>
-                                    <div class="collapse border">
+                                    <div className="collapse border">
                                         <input type="checkbox" />
-                                        <div class="collapse-title text-base font-medium flex justify-between">
+                                        <div className="collapse-title text-base font-medium flex justify-between">
                                             <div>Enter Coupon <span className='text-sm'>(Upto $100)</span> </div><div className='text-sm flex'>{couponLocal}% coupon applied <RiArrowDropDownLine className='text-2xl' /></div>
                                         </div>
-                                        <div class="collapse-content flex justify-between">
+                                        <div className="collapse-content flex justify-between">
                                             {/* Need to handle the logic of verifying the coupon code ... and then remove readonly */}
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Apply Coupon' />
                                             <button className='btn btn-outline btn-warning' onClick={() => setCouponLocal(10)}> NewBie 10% Off </button>
                                             <button className='btn btn-outline btn-warning' onClick={() => setCouponLocal(40)}> Special Offer 40% Off </button>
                                         </div>
                                     </div>
-                                    <div class="collapse border">
+                                    <div className="collapse border">
                                         <input type="checkbox" />
-                                        <div class="collapse-title text-base font-medium flex justify-between">
+                                        <div className="collapse-title text-base font-medium flex justify-between">
 
                                             <div>Apply Gift Card <span className='text-sm'>(Upto $50)</span></div><div className='text-2xl'><RiArrowDropDownLine /></div>
                                         </div>
-                                        <div class="collapse-content flex justify-between">
+                                        <div className="collapse-content flex justify-between">
                                             {/* Need to handle the logic of verifying the giftcard string... and then remove readonly */}
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Apply GiftCard' />
                                             <button className='btn btn-outline btn-warning' onClick={() => setGiftCardLocal(10)}> Birthday Off 20%</button>

@@ -358,10 +358,10 @@ $container-lg: $container-large-desktop !default;
     }
   }
   position: relative;
-  top: 209px;
+  top: 259px;
   height: 450px;
   @media screen and (max-width: $screen-phone) {
-    top: 1080px;
+    top: 1140px;
     width: 342px;
   }
   @media screen and (min-width: $screen-phone) and (max-width: $screen-tablet) {
@@ -459,10 +459,10 @@ $container-lg: $container-large-desktop !default;
     }
   }
   position: relative;
-  top: 239px;
+  top: 289px;
   height: 450px;
   @media screen and (max-width: $screen-sm) {
-    top: 1450px;
+    top: 1550px;
     max-width: 100%;
   }
   @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {

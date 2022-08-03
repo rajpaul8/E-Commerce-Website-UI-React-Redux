@@ -298,7 +298,7 @@ a {
 
 .home-section-three {
   position: relative;
-  top: 209px;
+  top: 259px;
   height: 450px;
 }
 @media screen and (max-width: 768px) {
@@ -308,7 +308,7 @@ a {
 }
 @media screen and (max-width: 480px) {
   .home-section-three {
-    top: 1080px;
+    top: 1140px;
     width: 342px;
   }
 }
@@ -409,7 +409,7 @@ a {
 
 .home-section-four {
   position: relative;
-  top: 239px;
+  top: 289px;
   height: 450px;
 }
 @media screen and (max-width: 768px) {
@@ -419,7 +419,7 @@ a {
 }
 @media screen and (max-width: 768px) {
   .home-section-four {
-    top: 1450px;
+    top: 1550px;
     max-width: 100%;
   }
 }

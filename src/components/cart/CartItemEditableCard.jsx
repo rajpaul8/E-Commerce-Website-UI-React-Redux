@@ -29,7 +29,7 @@ function CartItemEditableCard() {
                             <tr className='w-full overflow-x-scroll'>
                                 {cart.cartItems.map((item) => {
                                     return <>
-                                        <td>
+                                        <td id={item.id}>
                                             <div className="flex items-center space-x-5">
                                                 <div className="avatar">
                                                     <div className=" lg:w-24 lg:h-28">

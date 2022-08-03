@@ -47,9 +47,9 @@ function Navbar() {
                     </div>
                     <div className="navbar-end flex">
                         <NavLink to='/cart'>
-                            <div class="indicator">
+                            <div className="indicator">
                                 <BsFillBagCheckFill className='text-xl' />
-                                <span class="badge badge-sm indicator-item">{cart.cartTotalQuantity}</span>
+                                <span className="badge badge-sm indicator-item">{cart.cartTotalQuantity}</span>
                             </div>
                         </NavLink>
                     </div>

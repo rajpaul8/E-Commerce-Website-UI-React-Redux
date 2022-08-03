@@ -116,6 +116,7 @@ function Category() {
         return <Spinner></Spinner>
     }
 
+// Pagination Logic 
 
     return (
         <>
@@ -149,7 +150,6 @@ function Category() {
                                             </label>
                                         </div>
                                     </>}
-
                             </div>
                             <div className="aem-GridColumn aem-GridColumn--default--9 aem-GridColumn--tablet--1 aem-GridColumn--phone--1 pt-1.5">
                                 {/* ProductsResults Component */}
@@ -164,7 +164,6 @@ function Category() {
                                                     <li><a onClick={sortHighToLow}> High to Low</a></li>
                                                 </ul>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div className='aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--6 aem-GridColumn--phone--5'>
@@ -206,10 +205,6 @@ function Category() {
                     </div>
                 </div>
             </div>
-
-
-
-
         </>
     )
 }
