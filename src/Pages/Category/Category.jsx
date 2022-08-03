@@ -52,7 +52,7 @@ function Category() {
     const dispatch = useDispatch();
     const [filterDataLoading, setFilterDataLoading] = useState();
     // useState to manage temp. sorting and filtering of the original data
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([products]);
 
     // Dispatch Fetch Products
     useEffect(() => {
@@ -63,14 +63,18 @@ function Category() {
         let filteringProd = products.filter((prod) => prod.category === selectedCategoryHeader)
         setFilterDataLoading(false)
 
-        if (products.length > 0) {
+        setFilteredProducts(products);
 
+        if (products.length > 0 && selectedCategoryHeader !== 'All Products') {
             setFilteredProducts(filteringProd)
+        } else if (selectedCategoryHeader === 'All Products') {
+            setFilteredProducts(products);
         }
+
         handleFilters(selectedfilterCategory)
     }, [dispatch, location, setFilterDataLoading, selectedCategoryHeader])
 
-    
+
     // Sort by Price
     const sortLowToHigh = () => {
         const sortedLowToHigh = [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
@@ -112,11 +116,12 @@ function Category() {
         setSelectedFilterCategory(newFilter)
     }
 
+    // Pagination Logic 
+
+
     if (isLoading || filterDataLoading) {
         return <Spinner></Spinner>
     }
-
-// Pagination Logic 
 
     return (
         <>
@@ -182,23 +187,20 @@ function Category() {
                                             </div>
                                         </>
                                         )
+                                    }) : products.map((product) => {
+                                        return (<>
+                                            <div key={product.id} className='aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--tablet--3 aem-GridColumn--phone--6'>
+                                                <ProductCard productImage={product.image} productName={product.title} productPrice={product.price} productID={product.id} productCategory={product.category}></ProductCard>
+                                            </div>
+                                        </>
+                                        )
                                     })
-                                        : products.map((product) => {
-                                            return (<>
-                                                <div key={product.id} className='aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--tablet--3 aem-GridColumn--phone--6'>
-                                                    <ProductCard productImage={product.image} productName={product.title} productPrice={product.price} productID={product.id} productCategory={product.category}></ProductCard>
-                                                </div>
-                                            </>
-                                            )
-                                        })
+
                                     }
                                 </div>
                                 {/* Pagination Here */}
                                 <div className="btn-group flex justify-center space-x-7">
                                     <button className="">1</button>
-                                    <button className="">2</button>
-                                    <button className="">3</button>
-                                    <button className="">4</button>
                                 </div>
                             </div>
                         </div>

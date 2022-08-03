@@ -47,16 +47,16 @@ function CartPaymentSection() {
                             {/* <!-- row 1 --> */}
                             <tr >
                                 <td className='text-base font-light'>Sub Total</td>
-                                <td className='flex justify-end'>${cartTotalPriceAmountWithoutDiscount}</td>
+                                <td className='flex justify-end'>${cartTotalPriceAmountWithoutDiscount.toFixed(2)}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Coupon</td>
-                                <td className='flex justify-end'>{coupon > 0 ? <>- $ {couponDiscount}</> : <>- $ 0</>}</td>
+                                <td className='flex justify-end'>{coupon > 0 ? <>- $ {couponDiscount.toFixed(2)}</> : <>- $ 0</>}</td>
                             </tr>
                             {/* <!-- row 3 --> */}
                             <tr >
                                 <td className='text-base font-light'>Gift Card</td>
-                                <td className='flex justify-end'>{giftCard > 0 ? <> - $ {giftCardDiscount}</> : <>- $ 0</>}</td>
+                                <td className='flex justify-end'>{giftCard > 0 ? <> - $ {giftCardDiscount.toFixed(2)}</> : <>- $ 0</>}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Estimated Tax</td>

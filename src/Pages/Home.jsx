@@ -80,8 +80,8 @@ function Home() {
                     <h2 className="py-1">Lorem Ipsum Dolor Tempor</h2>
                     <p className="py-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor labore dolore magna lorem ipsum dolor sit dolore magna.</p>
                     <div className="flex flex-col items-center md:flex-row md:justify-start py-8 space-y-5 md:space-y-0 md:space-x-5">
-                      <button className="organgeButtonOutline">SHOP COLLECTION</button>
-                      <button className="organgeButtonFilled">SHOP NOW</button>
+                      <Link to='/products'><button className="organgeButtonOutline">SHOP COLLECTION</button></Link>
+                      <Link to='/products'> <button className="organgeButtonFilled">SHOP NOW</button></Link>
                     </div>
                     <div className=" flex justify-center md:justify-start"><div className="breaker-hr-orangeBar"></div></div>
                   </div>

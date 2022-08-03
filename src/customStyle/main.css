@@ -570,12 +570,12 @@ a {
 .productCard .productImage {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e7;
+  background-color: white;
 }
 .productCard .productImage img {
   height: 382px !important;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 @media screen and (max-width: 768px) {
   .productCard .productImage img {

@@ -602,10 +602,10 @@ $container-lg: $container-large-desktop !default;
   .productImage {
     display: flex;
     flex-direction: column;
-    background-color: $gray-l1;
+    background-color: white;
     img {
       height: 382px !important;
-      object-fit: cover;
+      object-fit: contain;
       @media screen and (max-width: $screen-sm) {
         height: 196px !important;
       }
