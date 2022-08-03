@@ -73,11 +73,11 @@ function Category() {
     
     // Sort by Price
     const sortLowToHigh = () => {
-        const sortedLowToHigh = [...products].sort((a, b) => (a.price > b.price ? 1 : -1))
+        const sortedLowToHigh = [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
         return setFilteredProducts(sortedLowToHigh)
     }
     const sortHighToLow = () => {
-        const sortedHighToLow = [...products].sort((a, b) => (a.price > b.price ? -1 : 1))
+        const sortedHighToLow = [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
         return setFilteredProducts(sortedHighToLow)
     }
 

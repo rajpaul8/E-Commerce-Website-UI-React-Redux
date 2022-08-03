@@ -626,8 +626,8 @@ a {
 .productThumbnails img {
   width: 120px;
   height: 100px;
-  -o-object-fit: conatin;
-  object-fit: conatin;
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 @media screen and (max-width: 480px) {
   .productThumbnails img {
@@ -641,13 +641,13 @@ a {
 
 .productproductSlides,
 .productproductSlides li {
-  height: 70vmin;
+  max-height: 24rem;
 }
 
 .productproductSlides img {
-  height: 70vmin;
-  -o-object-fit: conatin;
-  object-fit: conatin;
+  max-height: 24rem;
+  -o-object-fit: contain;
+  object-fit: contain;
   align-items: center;
 }
 .productproductSlides li {

@@ -666,8 +666,8 @@ $container-lg: $container-large-desktop !default;
 .productThumbnails img {
   width: 120px;
   height: 100px;
-  -o-object-fit: conatin;
-  object-fit: conatin;
+  -o-object-fit: contain;
+  object-fit: contain;
   @media screen and (max-width: $screen-phone) {
     width: 100%;
   }
@@ -679,13 +679,13 @@ $container-lg: $container-large-desktop !default;
 
 .productproductSlides,
 .productproductSlides li {
-  height: 70vmin;
+  max-height: 24rem;
 }
 
 .productproductSlides img {
-  height: 70vmin;
-  -o-object-fit: conatin;
-  object-fit: conatin;
+  max-height: 24rem;
+  -o-object-fit: contain;
+  object-fit: contain;
   align-items: center;
   @media screen and (max-width: $screen-phone) {
   }
