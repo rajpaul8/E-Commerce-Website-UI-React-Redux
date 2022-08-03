@@ -6,6 +6,7 @@ import { BsPencil } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 function ContactEditableCard() {
+    
     const [contactForm, setContactForm] = useState({
         email: '',
         phone: '',
@@ -45,7 +46,6 @@ function ContactEditableCard() {
         }
     }, [])
 
-
     return (
         <>
             <div className='mt-7 mb-5 border shadow'>
@@ -62,7 +62,6 @@ function ContactEditableCard() {
                                             <BsPencil className='mr-1' /> Edit
                                         </Link>
                                     </div>
-
                                 </th>
                             </tr>
                         </thead>
@@ -77,8 +76,7 @@ function ContactEditableCard() {
                                 <td>
                                     <p>{contactForm.streetAddress}</p>
                                     <p>{contactForm.streetAddress2}</p>
-                                </td>
-                                
+                                </td>   
                             </tr>
                         </tbody>
                     </table>

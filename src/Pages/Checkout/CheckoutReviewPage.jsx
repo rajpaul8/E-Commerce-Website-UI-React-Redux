@@ -2,9 +2,16 @@ import React from 'react'
 import ContactEditableCard from "../../components/cart/ContactEditableCard"
 import CartPaymentSection from "../../components/cart/CartPaymentSection"
 import ShippingEditableCard from '../../components/cart/ShippingEditableCard'
-import PaymentInformation from '../../components/cart/PaymentInformation'
+import PaymentEditableCard from '../../components/cart/PaymentEditableCard'
+import CartItemEditableCard from '../../components/cart/CartItemEditableCard'
+import { useNavigate } from 'react-router-dom'
 
-function CheckoutPaymentPage() {
+function CheckoutReviewPage() {
+    const navigate =useNavigate();
+
+    const handlePlaceOrder =()=>{
+        navigate('/checkout/order-placed')
+    }
     return (
         <>
             <div className="flex justify-center">
@@ -26,8 +33,17 @@ function CheckoutPaymentPage() {
                                     <ShippingEditableCard />
                                 </div>
 
-                                {/* Payment Information Here...*/}
-                                <PaymentInformation/>
+                                {/* Payment Editable Form Information Here...*/}
+                                <div className='mt-3 mb-5'>
+                                    <PaymentEditableCard />
+                                </div>
+
+                                {/* Items in the Cart Card Here */}
+
+                                <CartItemEditableCard />
+                                <div className='flex justify-center mt-7 mb-7'>
+                                    <button className='continueShoppingButton text-md' onClick={handlePlaceOrder}> PLACE ORDER </button>
+                                </div>
 
                             </div>
 
@@ -35,7 +51,9 @@ function CheckoutPaymentPage() {
                             <div className="aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2">
 
                                 {/* Pricing Summary Table Here */}
-                                <CartPaymentSection />
+                                <div className="lg:mt-16">
+                                    <CartPaymentSection />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,4 +63,4 @@ function CheckoutPaymentPage() {
     )
 }
 
-export default CheckoutPaymentPage
+export default CheckoutReviewPage

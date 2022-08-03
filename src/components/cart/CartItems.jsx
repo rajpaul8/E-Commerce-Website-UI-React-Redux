@@ -9,7 +9,6 @@ import { removeFromCart, decreaseCart, addToCart } from '../../features/cart/car
 function CartItems({ cartItems }) {
     const dispatch = useDispatch();
 
-
     const handleCartQuantityDecreament = (item) => {
         if(item.cartQuantity === 1){
             alert(`You're about to remove ${item.title}. Are you sure about it?`);
@@ -94,11 +93,7 @@ function CartItems({ cartItems }) {
                                 </tr>
                             </>
                         })}
-
-
                     </tbody>
-
-
                 </table>
             </div>
 

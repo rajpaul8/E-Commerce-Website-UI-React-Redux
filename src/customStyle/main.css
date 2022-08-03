@@ -821,4 +821,20 @@ a {
   color: #181c24;
   background-color: #ffd07f;
   border: 1px solid #ffc43a;
+}
+
+.orangeBannerBox {
+  background: #ff8243 0% 0% no-repeat padding-box;
+  border: 1px solid #d1d3d6;
+  color: white;
+  border-radius: 2px;
+  opacity: 1;
+}
+.orangeBannerBox .socialMedia {
+  background: #ff8243 0% 0% no-repeat padding-box;
+  border: 1px solid #d1d3d6;
+  border-radius: 2px;
+  opacity: 1;
+  width: 49px;
+  height: 49px;
 }/*# sourceMappingURL=main.css.map */

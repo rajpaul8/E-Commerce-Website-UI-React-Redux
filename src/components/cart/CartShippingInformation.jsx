@@ -1,31 +1,36 @@
 import React, { useState } from 'react'
 import { updatePricing } from '../../features/pricingSummary/pricingSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 function CartShippingInformation() {
-    const {pricingSummary} = useSelector(state=>state.pricing);
-
+    const { pricingSummary } = useSelector(state => state.pricing);
+    const [shippingMode, setShippingMode] = useState(-1);
     const [shippingMenu, setShippingMenu] = useState(pricingSummary)
     const dispatch = useDispatch();
-    
-    const navigate =useNavigate();
 
-    const handleRadioToggle =(e)=>{
+    const navigate = useNavigate();
+
+    const handleRadioToggle = (e) => {
         let shippingLocal = { ...pricingSummary };
         shippingLocal.shipping = e.target.value;
+        setShippingMode(e.target.value)
         dispatch(updatePricing(shippingLocal));
     }
 
-    const handleShippingCharges = (e)=>{
-        let shippingLocal = {...pricingSummary};
-        shippingLocal.shipping = e.target.value;
-        dispatch(updatePricing(shippingLocal));
-        toast.success(`${e.target.id} mode of delivery selected`);
-        navigate('/checkout/payment-information')
+    const handleShippingCharges = () => {
+        let shippingLocal = { ...pricingSummary };
+        if (shippingMode === -1) {
+            toast.warning(`Please select a shipping mode`)
+        }
+        else {
+            shippingLocal.shipping = shippingMode;
+            dispatch(updatePricing(shippingLocal));
+            navigate('/checkout/payment-information')
+        }
     }
-    
+
     return (
         <>
             <div>
@@ -45,7 +50,7 @@ function CartShippingInformation() {
                 <label htmlFor="shippingMethod" className='text-md'>Next Day Delivery (Next business days via FedEx) $53.61</label>
             </div>
             <div className='flex justify-center mt-7'>
-                <button className='continueShoppingButton text-md' onClick={() => handleShippingCharges()}> CONTINUE TO PAYMENT </button>
+                <button className='continueShoppingButton text-md' onClick={handleShippingCharges}> CONTINUE TO PAYMENT </button>
             </div>
 
             <div className='mt-9'>

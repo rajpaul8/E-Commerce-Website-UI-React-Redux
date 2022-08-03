@@ -10,6 +10,8 @@ import Cart from "./Pages/Cart";
 import CheckoutContactPage from "./Pages/Checkout/CheckoutContactPage";
 import CheckoutShippingPage from './Pages/Checkout/CheckoutShippingPage';
 import CheckoutPaymentPage from "./Pages/Checkout/CheckoutPaymentPage";
+import CheckoutReviewPage from "./Pages/Checkout/CheckoutReviewPage";
+import CheckoutOrderPlacedPage from "./Pages/Checkout/CheckoutOrderPlacedPage";
 
 function App() {
   return (
@@ -74,10 +76,28 @@ function App() {
               }
             ></Route>
             <Route
-              path="/checkout/shipping-information"
+              path="/checkout/payment-information"
               element={
                 <>
                   <CheckoutPaymentPage />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="checkout/final-review"
+              element={
+                <>
+                  <CheckoutReviewPage />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="checkout/order-placed"
+              element={
+                <>
+                  <CheckoutOrderPlacedPage />
                   <Footer />
                 </>
               }
