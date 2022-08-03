@@ -8,11 +8,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Pages/Cart";
 import CheckoutContactPage from "./Pages/Checkout/CheckoutContactPage";
-import CheckoutShippingPage from './Pages/Checkout/CheckoutShippingPage';
+import CheckoutShippingPage from "./Pages/Checkout/CheckoutShippingPage";
 import CheckoutPaymentPage from "./Pages/Checkout/CheckoutPaymentPage";
 import CheckoutReviewPage from "./Pages/Checkout/CheckoutReviewPage";
 import CheckoutOrderPlacedPage from "./Pages/Checkout/CheckoutOrderPlacedPage";
-
+import ScrollToTop from "./hooks/ScrollToTop";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
       <Router>
         <div className="max-w-screen-2xl mx-auto">
           <Navbar />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route

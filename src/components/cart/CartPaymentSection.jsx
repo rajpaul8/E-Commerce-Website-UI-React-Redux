@@ -25,14 +25,14 @@ function CartPaymentSection() {
             setGiftCardDiscount(50);
         }
         else {
-            setGiftCardDiscount((cartTotalPriceAmountWithoutDiscount * giftCard) / 100)
+            setGiftCardDiscount(((cartTotalPriceAmountWithoutDiscount * giftCard) / 100))
         }
 
         // Estimated Taxed Amount
-        setEstimatedTax((((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
+        setEstimatedTax((((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100))
 
         // original cost + (orignalCost- couponDiscounts + tax)
-        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2)+shipping)
+        setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100)+shipping)
     }, 
         [coupon, giftCard, cartTotalPriceAmountWithoutDiscount, estimatedTotal, shipping])
 
@@ -47,20 +47,20 @@ function CartPaymentSection() {
                             {/* <!-- row 1 --> */}
                             <tr >
                                 <td className='text-base font-light'>Sub Total</td>
-                                <td className='flex justify-end'>${cartTotalPriceAmountWithoutDiscount.toFixed(2)}</td>
+                                <td className='flex justify-end'>${cartTotalPriceAmountWithoutDiscount}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Coupon</td>
-                                <td className='flex justify-end'>{coupon > 0 ? <>- $ {couponDiscount.toFixed(2)}</> : <>- $ 0</>}</td>
+                                <td className='flex justify-end'>{coupon > 0 ? <>- $ {couponDiscount}</> : <>- $ 0</>}</td>
                             </tr>
                             {/* <!-- row 3 --> */}
                             <tr >
                                 <td className='text-base font-light'>Gift Card</td>
-                                <td className='flex justify-end'>{giftCard > 0 ? <> - $ {giftCardDiscount.toFixed(2)}</> : <>- $ 0</>}</td>
+                                <td className='flex justify-end'>{giftCard > 0 ? <> - $ {giftCardDiscount}</> : <>- $ 0</>}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Estimated Tax</td>
-                                <td className='flex justify-end'>${((cartTotalPriceAmountWithoutDiscount * 12) / 100).toFixed(2)}</td>
+                                <td className='flex justify-end'>${cartTotalPriceAmountWithoutDiscount&&((cartTotalPriceAmountWithoutDiscount * 12) / 100)}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Estimated Shipping</td>
@@ -68,7 +68,7 @@ function CartPaymentSection() {
                             </tr>
                             <tr >
                                 <td className='text-base font-bold'>Estimated Total</td>
-                                <td className='flex justify-end font-bold'>$ {((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100) + parseInt(shipping)).toFixed(2)}</td>
+                                <td className='flex justify-end font-bold'>$ {cartTotalPriceAmountWithoutDiscount&&((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100) + parseInt(shipping))}</td>
                             </tr>
                         </tbody>
                     </table>
