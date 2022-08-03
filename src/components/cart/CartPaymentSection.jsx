@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
-function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftCard }) {
+function CartPaymentSection() {
+
+    const { pricingSummary } = useSelector(state=>state.pricing);
+    const { cartTotalPriceAmountWithoutDiscount, coupon, giftCard, shipping } = pricingSummary;
     const [estimatedTotal, setEstimatedTotal] = useState(0)
     const [couponDiscount, setCouponDiscount] = useState(0)
     const [giftCardDiscount, setGiftCardDiscount] = useState(0)
@@ -31,9 +35,7 @@ function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftC
         setEstimatedTotal((cartTotalPriceAmountWithoutDiscount + ((cartTotalPriceAmountWithoutDiscount - couponDiscount - giftCardDiscount) * 12) / 100).toFixed(2))
     }, 
     [coupon, giftCard, cartTotalPriceAmountWithoutDiscount,])
-    
-    console.log(estimatedTotal)
-    
+
     return (
         <>
             <div className='shadow p-5'>
@@ -62,7 +64,7 @@ function CartPaymentSection({ cartTotalPriceAmountWithoutDiscount, coupon, giftC
                             </tr>
                             <tr >
                                 <td className='text-base font-light'>Estimated Shipping</td>
-                                <td className='flex justify-end'>FREE</td>
+                                <td className='flex justify-end'>{shipping == 0 ? 'FREE' : shipping}</td>
                             </tr>
                             <tr >
                                 <td className='text-base font-bold'>Estimated Total</td>

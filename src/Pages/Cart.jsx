@@ -9,13 +9,21 @@ import CartPaymentSection from '../components/cart/CartPaymentSection';
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { BsHandbag, BsPaypal } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom';
+import { updatePricing } from '../features/pricingSummary/pricingSlice'
 
 function Cart() {
     const cart = useSelector((state) => state.cart);
-    const [coupon, setCoupon] = useState(0);
-    const [giftCard, setGiftCard] = useState(0);
-    const [pricingSummary, setPricingSummary] = useState({
-        cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, coupon, giftCard
+    const {pricingSummary} = useSelector(state=>state.pricing)
+    const { cartTotalPriceAmountWithoutDiscount, coupon, giftCard, shipping } = pricingSummary;
+
+    // Making Local States to Rapidly Update item from single element and put it in a form to update the entire dict. of price inn one go
+    
+    const [couponLocal, setCouponLocal]= useState(0)
+    const [giftCardLocal, setGiftCardLocal]= useState(0)
+    const [shippingLocal, setShippingLocal]= useState(0)
+
+    const [pricingSummaryLocal, setPricingSummaryLocal] = useState({
+        cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, couponLocal, giftCardLocal, shippingLocal
     })
 
     const dispatch = useDispatch();
@@ -24,15 +32,19 @@ function Cart() {
         dispatch(getTotals());
 
         // UseEffect to store this payment Details in Local session Storage as backend DB is not connected
-        setPricingSummary({
-            cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, coupon, giftCard
-        })
-    }, [cart, dispatch, coupon, giftCard]);
+        setPricingSummaryLocal({
+            cartTotalPriceAmountWithoutDiscount: cart.cartTotalAmount, coupon:couponLocal, giftCard:giftCardLocal, shipping:shippingLocal
+        });
+
+        dispatch(updatePricing(pricingSummaryLocal))
+
+    }, [cart, dispatch, couponLocal, giftCardLocal, shippingLocal]);
 
 
     const navigate = useNavigate();
 
     const handleCheckout = () => {
+        dispatch(updatePricing(pricingSummary))
         localStorage.setItem("pricingSummary", JSON.stringify(pricingSummary));
         navigate('/checkout');
     }
@@ -78,13 +90,13 @@ function Cart() {
                                     <div class="collapse border">
                                         <input type="checkbox" />
                                         <div class="collapse-title text-base font-medium flex justify-between">
-                                            <div>Enter Coupon <span className='text-sm'>(Upto $100)</span> </div><div className='text-sm flex'>{coupon}% coupon applied <RiArrowDropDownLine className='text-2xl' /></div>
+                                            <div>Enter Coupon <span className='text-sm'>(Upto $100)</span> </div><div className='text-sm flex'>{couponLocal}% coupon applied <RiArrowDropDownLine className='text-2xl' /></div>
                                         </div>
                                         <div class="collapse-content flex justify-between">
                                             {/* Need to handle the logic of verifying the coupon code ... and then remove readonly */}
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Apply Coupon' />
-                                            <button className='btn btn-outline btn-warning' onClick={() => setCoupon(10)}> NewBie 10% Off </button>
-                                            <button className='btn btn-outline btn-warning' onClick={() => setCoupon(40)}> Special Offer 40% Off </button>
+                                            <button className='btn btn-outline btn-warning' onClick={() => setCouponLocal(10)}> NewBie 10% Off </button>
+                                            <button className='btn btn-outline btn-warning' onClick={() => setCouponLocal(40)}> Special Offer 40% Off </button>
                                         </div>
                                     </div>
                                     <div class="collapse border">
@@ -96,8 +108,8 @@ function Cart() {
                                         <div class="collapse-content flex justify-between">
                                             {/* Need to handle the logic of verifying the giftcard string... and then remove readonly */}
                                             <input type="text" value='' readOnly className='border rounded-md' placeholder='Apply GiftCard' />
-                                            <button className='btn btn-outline btn-warning' onClick={() => setGiftCard(10)}> Birthday Off 20%</button>
-                                            <button className='btn btn-outline btn-warning' onClick={() => setGiftCard(40)}> Special Offer 25% Off </button>
+                                            <button className='btn btn-outline btn-warning' onClick={() => setGiftCardLocal(10)}> Birthday Off 20%</button>
+                                            <button className='btn btn-outline btn-warning' onClick={() => setGiftCardLocal(40)}> Special Offer 25% Off </button>
                                         </div>
                                     </div>
 
@@ -105,7 +117,7 @@ function Cart() {
                             </div>
                             <div className="aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2">
                                 {/* Pricing Summary Table Here */}
-                                <CartPaymentSection cartTotalPriceAmountWithoutDiscount={cart.cartTotalAmount} coupon={coupon} giftCard={giftCard} />
+                                <CartPaymentSection />
                                 <div className='flex justify-center mt-5'>
                                     <button className='organgeButtonFilled flex justify-center items-center' onClick={() => handleCheckout()}><BsHandbag className="text-xl mr-2" /> Checkout</button>
                                 </div>

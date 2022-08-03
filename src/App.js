@@ -7,7 +7,8 @@ import ProductDetail from "./Pages/ProductDetail";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Pages/Cart";
-import Checkout from './Pages/Checkout/CheckoutContactPage'
+import CheckoutContactPage from "./Pages/Checkout/CheckoutContactPage";
+import CheckoutShippingPage from './Pages/Checkout/CheckoutShippingPage';
 
 function App() {
   return (
@@ -57,7 +58,16 @@ function App() {
               path="/checkout"
               element={
                 <>
-                  <Checkout />
+                  <CheckoutContactPage />
+                  <Footer />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/checkout/shipping-information"
+              element={
+                <>
+                  <CheckoutShippingPage />
                   <Footer />
                 </>
               }

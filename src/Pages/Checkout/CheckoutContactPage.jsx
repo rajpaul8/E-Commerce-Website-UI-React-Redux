@@ -1,14 +1,14 @@
 import CartPaymentSection from "../../components/cart/CartPaymentSection"
 import { useEffect, useState } from "react"
 import CartContactInformation from "../../components/cart/CartContactInformation"
+import { useSelector } from "react-redux"
 
-function Checkout() {
-    const [pricingSummary, setPricingSummary] = useState({})
+function CheckoutContactPage() {
+    const {pricingSummary} = useSelector(state=>state.pricing)
 
     useEffect(()=>{
-        setPricingSummary(JSON.parse(localStorage.getItem("pricingSummary")))
+        
     },[])
-    console.log(pricingSummary)
 
   return (
     <>
@@ -31,6 +31,25 @@ function Checkout() {
                               <CartContactInformation />
                           </div>
                           <div className="aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2">
+                              
+                              {/* Sign in for Express Checkout Section Should come here.... only for large screen*/}
+                              <div className="mb-5 mt-3 hidden lg:block">
+                                  <div className="p-3 border">
+                                      <div className="flex justify-center align-center">
+                                          <div className="aem-Grid aem-Grid--default--12 aem-Grid--tablet--1 aem-Grid--phone--12 phone_flex_col overflow-x-hidden">
+                                              <div className="aem-GridColumn aem-GridColumn--default--7 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2">
+                                                  <h1 className="text-md pt-1 font-bold">Sign in for Express Checkout</h1>
+                                              </div>
+                                              <div className="aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--tablet--1 aem-GridColumn--phone--12 md:pr-2 flex justify-center">
+                                                  <div className=" continueShoppingButton">
+                                                      <button className="text-md pl-5 pr-5">Sign in</button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
                               {/* Pricing Summary Table Here */}
                               <CartPaymentSection cartTotalPriceAmountWithoutDiscount={pricingSummary.cartTotalPriceAmountWithoutDiscount} coupon={pricingSummary.coupon} giftCard={pricingSummary.giftCard} />
                           </div>
@@ -43,4 +62,4 @@ function Checkout() {
   )
 }
 
-export default Checkout
+export default CheckoutContactPage

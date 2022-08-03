@@ -6,8 +6,6 @@ import { ImBin } from 'react-icons/im';
 import { useDispatch } from 'react-redux';
 import { removeFromCart, decreaseCart, addToCart } from '../../features/cart/cartSlice';
 
-
-
 function CartItems({ cartItems }) {
     const dispatch = useDispatch();
 
