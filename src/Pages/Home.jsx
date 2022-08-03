@@ -17,13 +17,12 @@ function Home() {
   return (
     <>
         <SwiperComponent />
-      <div className="min-h-screen container">
+      <div className="container">
         {/* Home 2nd Screen Categories Segment */}
         <div className="flex justify-center">
           <div className="homeCategoriesComponent">
             <div className="container">
               <div className="aem-Grid aem-Grid--default--12 aem-Grid--tablet--12 aem-Grid--phone--1 phone_flex_col overflow-y-hidden">
-
                 <div className="aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--tablet--6 aem-GridColumn--phone--1 md:pr-2 hoverImageScaleZoomOut">
                   <Link to='/products/women'>
                     <div className="homeCategoriesImage bg-unsplash-[dlxLGIy-2VU] bg-cover"></div>
@@ -68,7 +67,7 @@ function Home() {
         </div>
 
         {/* Home 3rd Screen Segment */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-24">
           <div className=" home-section-three">
             <div className="container">
               <div className="aem-Grid aem-Grid--default--12 aem-Grid--tablet--12 aem-Grid--phone--1 !flex flex-col md:flex-row-reverse">
@@ -114,7 +113,7 @@ function Home() {
               </div>
               {/* Footer Here */}
               <div >
-                <div className="footerStyle pt-7">
+                <div className="footerStyle lg:block hidden">
 
                       <footer className="footer p-10 bg-base-200 text-base-content space-x-7">
                         

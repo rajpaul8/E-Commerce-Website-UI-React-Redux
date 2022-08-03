@@ -47,7 +47,7 @@ function SliderComponent() {
             <>
                 {listings.length > 0 && (
                     <>
-                        <div className="min-h-screen">
+                        <div className="h-full">
                             <Swiper slidesPerView={1} pagination={{ clickable: true }} navigation={true} modules={[Navigation]}>
                                 {listings.map((item, id) => (
                                     <SwiperSlide key={id}>
