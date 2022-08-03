@@ -77,12 +77,20 @@ function Category() {
 
     // Sort by Price
     const sortLowToHigh = () => {
-        const sortedLowToHigh = [...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1))
-        return setFilteredProducts(sortedLowToHigh)
+        if (filteredProducts.length > 0) {
+            return setFilteredProducts([...filteredProducts].sort((a, b) => (a.price > b.price ? 1 : -1)))
+        }
+        else {
+            return setFilteredProducts([...products].sort((a, b) => (a.price > b.price ? 1 : -1)))
+        }
     }
     const sortHighToLow = () => {
-        const sortedHighToLow = [...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1))
-        return setFilteredProducts(sortedHighToLow)
+        if(filteredProducts.length>0){
+            return setFilteredProducts([...filteredProducts].sort((a, b) => (a.price > b.price ? -1 : 1)))
+        }
+        else{
+            return setFilteredProducts([...products].sort((a, b) => (a.price > b.price ? -1 : 1)))
+        }
     }
 
     // Filter By Categories

@@ -38,7 +38,7 @@ const initialState = {
       },
   isError: false,
   isSuccess: false,
-  isLoading: false,
+  isLoading: true,
   message: "",
 };
 

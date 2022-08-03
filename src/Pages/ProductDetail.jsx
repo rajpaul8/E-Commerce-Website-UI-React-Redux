@@ -13,8 +13,6 @@ function ProductDetail() {
   const dispatch = useDispatch();
   const { productID } = useParams();
   const [isReadMore, setIsReadMore] = useState(true);
-  const [rating, setRating] = useState(0);
-  const [description, setDescription] = useState('')
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate()
 
@@ -22,14 +20,10 @@ function ProductDetail() {
     if (isError) {
       toast.error(message);
     }
+
     dispatch(getProduct(productID));
     //eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    setRating(product.rating.rate)
-    setDescription(product.description)
-  }, [rating, description])
 
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -102,7 +96,7 @@ function ProductDetail() {
                 </div>
 
                 <div className='text-sm pt-2'>
-                  {isReadMore ? description.slice(0, 150) : product.description}
+                  {isReadMore ? product.description.slice(0, 150) : product.description}
                   <span onClick={toggleReadMore} className="read-or-hide text-sm font-bold">
                     {isReadMore ? " ...Read more" : " show less"}
                   </span>
@@ -135,7 +129,7 @@ function ProductDetail() {
               <hr />
               <h1 className='text-3xl font-bold text-gray-800 pt-3'>{product.title}</h1>
               <h5 className='font-bold text-md pt-2'>Description</h5>
-              <h5 className='text-sm pt-1'>{description}</h5>
+              <h5 className='text-sm pt-1'>{product.description}</h5>
               <div className='pt-7'>
                 <div className='orange_border_product flex justify-center md:justify-start'>&nbsp;</div>
               </div>
