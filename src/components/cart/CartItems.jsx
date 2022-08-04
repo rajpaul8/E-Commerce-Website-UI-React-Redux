@@ -84,8 +84,8 @@ function CartItems({ cartItems }) {
                                                 </button>
                                             </label>
                                             <ul tabIndex="0" className="dropdown-content menu shadow bg-base-100">
-                                                <li><button> <BiPencil /> Edit</button></li>
-                                                <li><button> <ImBin /> Remove</button></li>
+                                                <li><Link to={`/products/${item.category}/${item.id}`} className='flex'><BiPencil /> Edit</Link></li>
+                                                <li><button onClick={() => handleRemoveItem(item)}> <ImBin /> Remove</button></li>
                                                 <li><button> <AiOutlineHeart /> Save for later </button></li>
                                             </ul>
                                         </div>
